@@ -1,7 +1,7 @@
 
 name := "fp-benchmark"
 version := "1.0"
-scalaVersion := "2.12.7"
+scalaVersion := "2.12.8"
 
 scalacOptions ++= Seq(
   "-feature",
@@ -9,11 +9,11 @@ scalacOptions ++= Seq(
   "-Ypartial-unification"
 )
 
-addCompilerPlugin("org.spire-math" %% "kind-projector" % "0.9.8")
+addCompilerPlugin("org.spire-math" %% "kind-projector" % "0.9.9")
 
 libraryDependencies ++= {
   val CatsEffect = Seq(
-    "org.typelevel" %% "cats-effect" % "1.0.0"
+    "org.typelevel" %% "cats-effect" % "1.1.0"
   )
 
   val CatsMtl = Seq(
