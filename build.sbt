@@ -1,4 +1,3 @@
-
 name := "fp-benchmark"
 version := "1.0"
 scalaVersion := "2.12.8"
@@ -13,7 +12,11 @@ addCompilerPlugin("org.spire-math" %% "kind-projector" % "0.9.9")
 
 libraryDependencies ++= {
   val CatsEffect = Seq(
-    "org.typelevel" %% "cats-effect" % "1.1.0"
+    "org.typelevel" %% "cats-effect" % "1.2.0"
+  )
+
+  val ZIO = Seq(
+    "org.scalaz" %% "scalaz-zio" % "0.6.0"
   )
 
   val CatsMtl = Seq(
@@ -25,7 +28,7 @@ libraryDependencies ++= {
     "org.scalatest" %% "scalatest" % "3.0.5" % Test
   )
 
-  CatsEffect ++ CatsMtl ++ ScalaTest
+  ZIO ++ CatsEffect ++ CatsMtl ++ ScalaTest
 }
 
 enablePlugins(JmhPlugin)

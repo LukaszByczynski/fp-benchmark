@@ -34,4 +34,10 @@ class MtlBenchmark {
     codebase.io(Config("", 1), 0, List[String]()).unsafeRunSync()
   }
 
+  @Benchmark
+  def io_zio(): Unit = {
+    val codebase = new Codebase
+    codebase.zio(Config("", 1), 0, List[String]())
+  }
+
 }

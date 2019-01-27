@@ -12,10 +12,13 @@ case class Config(name: String, token: Int)
 
 class Codebase {
 
+  import scalaz.zio.RTS
   import cats.syntax.flatMap._
   import cats.syntax.functor._
 
   type Log = List[String]
+
+  val rts = new RTS{}
 
   def imperative(R: => Config, state: Int, log: List[String]): (List[String], String, Int) = {
     val stateR = new AtomicReference[Int](state)
@@ -44,6 +47,24 @@ class Codebase {
       log2 <- logR.get
       state2 <- stateR.get
     } yield (log2, "pk", state2)
+  }
+
+  def zio(R: => Config, state: Int, log: List[String]): (List[String], String, Int) = {
+    import scalaz.zio.{IO => ZIO, Ref => ZRef}
+
+    val zioProgram = for {
+      stateR <- ZRef(state)
+      logR <- ZRef(log)
+      result <- ZIO.sync(R)
+      _ <- stateR.update(_ + 1)
+      _ <- logR.update(_ ++ List(s"test + $result"))
+      st <- stateR.modify(s => (s + 1, s + 1))
+      _ <- logR.update(_ ++ List(s"test2 + $st"))
+      log2 <- logR.get
+      state2 <- stateR.get
+    } yield (log2, "pk", state2)
+
+    rts.unsafeRun(zioProgram)
   }
 
   def program[F[_] : Monad](implicit
