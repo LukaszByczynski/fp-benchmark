@@ -1,6 +1,6 @@
 name := "fp-benchmark"
 version := "1.0"
-scalaVersion := "2.12.8"
+scalaVersion := "2.12.11"
 
 scalacOptions ++= Seq(
   "-feature",
@@ -8,27 +8,35 @@ scalacOptions ++= Seq(
   "-Ypartial-unification"
 )
 
-addCompilerPlugin("org.spire-math" %% "kind-projector" % "0.9.9")
+addCompilerPlugin("org.spire-math" %% "kind-projector" % "0.9.10")
 
 libraryDependencies ++= {
   val CatsEffect = Seq(
-    "org.typelevel" %% "cats-effect" % "1.2.0"
+    "org.typelevel" %% "cats-effect" % "2.1.2"
   )
 
   val ZIO = Seq(
-    "org.scalaz" %% "scalaz-zio" % "0.6.0"
+    "dev.zio" %% "zio" % "1.0.0-RC18-2"
   )
 
   val CatsMtl = Seq(
-    "org.typelevel" %% "cats-mtl-core" % "0.4.0",
-    "com.olegpy" %% "meow-mtl" % "0.2.0"
+    "org.typelevel" %% "cats-mtl-core" % "0.7.1",
+    "com.olegpy" %% "meow-mtl" % "0.2.1"
   )
 
   val ScalaTest = Seq(
-    "org.scalatest" %% "scalatest" % "3.0.5" % Test
+    "org.scalatest" %% "scalatest" % "3.1.1" % Test
   )
 
-  ZIO ++ CatsEffect ++ CatsMtl ++ ScalaTest
+  // val MinifpIO = Seq(
+  // "minifp" %% "io" % "0.1"
+  // )
+
+  val Monix = Seq(
+    "io.monix" %% "monix" % "3.1.0"
+  )
+
+  Monix ++ ZIO ++ CatsEffect ++ CatsMtl ++ ScalaTest // ++ MinifpIO
 }
 
 enablePlugins(JmhPlugin)
