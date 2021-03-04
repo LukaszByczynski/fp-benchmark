@@ -12,11 +12,11 @@ addCompilerPlugin("org.spire-math" %% "kind-projector" % "0.9.10")
 
 libraryDependencies ++= {
   val CatsEffect = Seq(
-    "org.typelevel" %% "cats-effect" % "2.1.2"
+    "org.typelevel" %% "cats-effect" % "2.3.3" % VersionScheme.Always
   )
 
   val ZIO = Seq(
-    "dev.zio" %% "zio" % "1.0.0-RC18-2"
+    "dev.zio" %% "zio" % "1.0.4"
   )
 
   val CatsMtl = Seq(
@@ -33,7 +33,7 @@ libraryDependencies ++= {
   // )
 
   val Monix = Seq(
-    "io.monix" %% "monix" % "3.1.0"
+    "io.monix" %% "monix" % "3.3.0"
   )
 
   Monix ++ ZIO ++ CatsEffect ++ CatsMtl ++ ScalaTest // ++ MinifpIO

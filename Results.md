@@ -6,11 +6,11 @@ experiments, perform baseline and negative tests that provide experimental contr
 the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
 Do not assume the numbers tell you what you want them to tell.
 
-| Benchmark                 | Mode                       | Cnt            | Score       | Error         | Units |
-| MtlBenchmark.imperative   | thrpt                      | 3              | 3149150.786 | ±  521129.197 | ops/s |
-| MtlBenchmark.io           | thrpt                      | 3              | 1061941.750 | ± 1101644.065 | ops/s |
-| MtlBenchmark.io_zio       | thrpt                      | 3              | 217763.685  | ±   81488.224 | ops/s |
-| MtlBenchmark.monxIo       | thrpt                      | 3              | 978416.058  | ±  415729.010 | ops/s |
-| MtlBenchmark.mtlMeow      | thrpt                      | 3              | 640451.011  | ±  303729.911 | ops/s |
-| MtlBenchmark.mtlStack     | thrpt                      | 3              | 112897.210  | ±   26473.125 | ops/s |
-| MtlBenchmark.mtlStackOpt | thrpt | 3   | 398611.416 | ±  181754.108 | ops/s |
+ Benchmark                  Mode  Cnt        Score         Error  Units
+ MtlBenchmark.imperative   thrpt    5  6184042.466 ± 2747933.859  ops/s
+ MtlBenchmark.io           thrpt    5  2242371.481 ±  550261.882  ops/s
+ MtlBenchmark.io_zio       thrpt    5   691043.552 ±   87659.235  ops/s
+ MtlBenchmark.monxIo       thrpt    5  1842797.694 ±  334572.983  ops/s
+ MtlBenchmark.mtlMeow      thrpt    5  1755027.936 ±  104711.308  ops/s
+ MtlBenchmark.mtlStack     thrpt    5   252575.529 ±   15548.080  ops/s
+ MtlBenchmark.mtlStackOpt  thrpt    5   801246.467 ±   61912.341  ops/s
